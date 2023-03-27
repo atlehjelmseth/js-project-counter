@@ -36,17 +36,14 @@ btns.forEach((btn) => {
       count = 0
     }
 
-    if (count > 0) {
+    if (count > 0)
       counter.style.color = 'green'
-    }
 
-    if (count < 0) {
+    if (count < 0)
       counter.style.color = 'red'
-    }
 
-    if (count === 0) {
+    if (count === 0)
       counter.style.color = 'grey'
-    }
 
     counter.textContent = count
   })
