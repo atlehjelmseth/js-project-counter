@@ -78,3 +78,20 @@ async function nextcomApi() {
     nextcomApi()
   }
   
+let myDocument = document.documentElement;
+  let fullscreen = document.getElementById("btnFull");
+
+  fullscreen.addEventListener("click", ()=> {
+    if(fullscreen.textContent == "Fullskjerm") {
+      if(myDocument.requestFullscreen){
+        myDocument.requestFullscreen();
+      }
+      else if(myDocument.msRequestFullscreen){
+        fullscreen.textContent = "Lukk";}
+    }
+    else {
+      fullscreen.textContent = "Fullskjerm";
+    }
+
+    /* 2:47 on movie */
+  });
