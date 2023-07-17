@@ -5,6 +5,10 @@ const number = document.querySelector("#counter");
 const interval = setInterval(function() {
   nextcomApi();
 }, 3000);
+let todaysGoal = document.getElementById("goal");
+let goalHtml = document.getElementById("todaysgoal");
+const add = document.getElementById("btn");
+
 
 
 const options = {
@@ -32,13 +36,29 @@ async function nextcomApi() {
 
       // console.log(resultsSpec)
       console.log(resultsSpec.totalCount)
-      number.innerHTML = -'127542' + resultsSpec.totalCount;
+      let globalString = localStorage.getItem('salesGoalLocal');
+      let globalNumber = JSON.parse(globalString);
+      number.innerHTML = -globalNumber + resultsSpec.totalCount;
+
+        
+    let goalString = localStorage.getItem('salesGoalLocal');
+    let goalFinal = JSON.parse(goalString);
+    goalHtml.innerHTML = '';
+    goalHtml.innerHTML += goalFinal;
 
       }catch (error) {
         console.log("error")
     }
-    // setTimeout(nextcomApi(), 15000);
    }
 
   nextcomApi()
 
+  add.onclick = function (ev) {
+    ev.preventDefault()
+    const goal = todaysGoal.value;
+    
+    localStorage.setItem('salesGoalLocal', JSON.stringify(goal))
+
+    nextcomApi()
+  }
+  
