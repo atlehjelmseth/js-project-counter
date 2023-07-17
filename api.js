@@ -46,6 +46,22 @@ async function nextcomApi() {
     goalHtml.innerHTML = '';
     goalHtml.innerHTML += goalFinal;
 
+    let count = -globalNumber + resultsSpec.totalCount;
+    console.log (count)
+
+    
+    if (count > 0)
+      counter.style.color = 'darkgreen'
+
+    if (count < 0)
+      counter.style.color = 'red'
+
+      if (count === 0)
+      counter.style.color = 'lightgreen'
+
+    if (count === -10 || count === -9 || count === -8 || count === -7 || count === -6 || count === -5 || count === -4 || count === -3 || count === -2 || count === -1)
+      counter.style.color = 'orange'
+
       }catch (error) {
         console.log("error")
     }

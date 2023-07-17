@@ -89,21 +89,21 @@
 //     document.getElementById('btn').addEventListener('click', salesGoal);
 // });
 
-let todaysGoal = document.getElementById("goal");
-let goalHtml = document.getElementById("todaysgoal");
-const add = document.getElementById("btn");
+// let todaysGoal = document.getElementById("goal");
+// let goalHtml = document.getElementById("todaysgoal");
+// const add = document.getElementById("btn");
 
 
-add.onclick = function (ev) {
-  ev.preventDefault()
-  const goal = todaysGoal.value;
+// add.onclick = function (ev) {
+//   ev.preventDefault()
+//   const goal = todaysGoal.value;
   
-  localStorage.setItem('salesGoalLocal', JSON.stringify(goal))
+//   localStorage.setItem('salesGoalLocal', JSON.stringify(goal))
 
-  let goalString = localStorage.getItem('salesGoalLocal');
-  let goalFinal = JSON.parse(goalString);
-  goalHtml.innerHTML = '';
-  goalHtml.innerHTML += goalFinal;
-  console.log(goalFinal);
-}
+//   let goalString = localStorage.getItem('salesGoalLocal');
+//   let goalFinal = JSON.parse(goalString);
+//   goalHtml.innerHTML = '';
+//   goalHtml.innerHTML += goalFinal;
+//   console.log(goalFinal);
+// }
 
