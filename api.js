@@ -44,7 +44,9 @@ async function nextcomApi() {
     let goalString = localStorage.getItem('salesGoalLocal');
     let goalFinal = JSON.parse(goalString);
     goalHtml.innerHTML = '';
-    goalHtml.innerHTML += goalFinal;
+    goalHtml.innerHTML += `
+    <p>${goalFinal}<p>
+    `;
 
     let count = -globalNumber + resultsSpec.totalCount;
     console.log (count)
@@ -52,7 +54,6 @@ async function nextcomApi() {
     
     if (count > 0)
       counter.style.color = 'darkgreen'
-
     if (count < 0)
       counter.style.color = 'red'
 

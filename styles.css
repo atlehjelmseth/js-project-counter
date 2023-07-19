@@ -16,25 +16,84 @@
 
 body {
   text-align: center;
+  background-color: #264348;
+}
+
+h1, p, .goal-top {
+  color: white;
+  font-family: "poppins";
+}
+
+label {
+  font-family: "poppins";
+}
+
+::placeholder {
+  font-family: "poppins";
+  color: lightgrey;
 }
 
 span {
   font-size: 600px;
   font-weight: bolder;
+  font-family: "poppins";
   padding: 10px;
   color: red;
+  text-shadow:1px 20px 300px #fff, 1px 20px 50px #ccc;
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 5px;
 }
 
-#btn {
+span p {
+  border: solid 10px black;
+}
+
+input {
   background: none;
   outline: none;
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 15px;
   border-radius: 10px;
   margin: 15px auto 15px auto;
   text-align: center;
   display: block;
+  color: white;
 }
+
+span text {
+  border: solid 10px #fff;
+}
+
+button {
+  background: none;
+  outline: none;
+  border: 1px solid white;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px auto 15px auto;
+  text-align: center;
+  display: block;
+  color: white;
+}
+
+button:hover {
+  cursor: pointer;
+  overflow: hidden;
+  color: #264348;
+  background-color: white;
+}
+
+#todaysgoal {
+  font-family: "poppins"; 
+  color: white;
+  font-weight: bolder;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;}
+
 
 .up {
   animation: up 0.5s ease;
