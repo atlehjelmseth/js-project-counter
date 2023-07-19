@@ -8,6 +8,7 @@ const interval = setInterval(function() {
 let todaysGoal = document.getElementById("goal");
 let goalHtml = document.getElementById("todaysgoal");
 let todaysales = document.getElementById("todaysales");
+let hidden = document.getElementById("hidden");
 const add = document.getElementById("btn");
 
 
@@ -85,7 +86,8 @@ async function nextcomApi() {
 
     nextcomApi()
   }
-  
+
+
 let myDocument = document.documentElement;
   let fullscreen = document.getElementById("btnFull");
 
@@ -103,7 +105,7 @@ let myDocument = document.documentElement;
       else if(myDocument.webkitRequestFullscreen){
         myDocument.webkitRequestFullscreen();
       }
-
+      hidden.style.display = "none";
       fullscreen.textContent = "Lukk"
     }
     else {
@@ -120,7 +122,7 @@ let myDocument = document.documentElement;
       else if(webkitexitFullscreen) {
         document.webkitexitFullscreen();
       }
-
+      hidden.style.display = "block";
       fullscreen.textContent = "Fullskjerm";
     }
 

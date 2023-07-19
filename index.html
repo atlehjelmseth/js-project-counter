@@ -24,33 +24,35 @@
       <button class="btn decrease">-</button>
       <button class="btn increase">SALG</button>
     </div> -->
-    <form>
+    <div id="hidden">
+      <form>
 
-      <div class="formBox">
-        <label for="goal" class="goal-top">Mål: </label>
-        <input type="number" id="goal" placeholder="Mål for dagen" />
+        <div class="formBox">
+          <label for="goal" class="goal-top">Mål: </label>
+          <input type="number" id="goal" placeholder="Mål for dagen" />
+        </div>
+        <div class="formBox">
+          <button id="btn">Sett mål!</button>
+        </div>
+        <div id="msg">
+          <pre></pre>
+        </div>
+      </form>
+      <div>
+        <p>Dagsmål:</p>
+        <div id="todaysgoal"></div>
       </div>
-      <div class="formBox">
-        <button id="btn">Sett mål!</button>
+      <div>
+        <p>Antall salg i dag:</p>
+        <div id="todaysales"></div>
+
       </div>
-      <div id="msg">
-        <pre></pre>
-      </div>
-    </form>
-    <div>
-      <p>Dagsmål:</p>
-      <div id="todaysgoal"></div>
+
+
     </div>
-    <div>
-      <p>Antall salg i dag:</p>
-      <div id="todaysales"></div>
-      <button id="btnFull">Fullskjerm</button>
-    </div>
-
-  </div>
-
-  <!-- <script src="main.js"></script> -->
-  <script src="api.js"></script>
+    <button id="btnFull">Fullskjerm</button>
+    <!-- <script src="main.js"></script> -->
+    <script src="api.js"></script>
 </body>
 
 </html>
