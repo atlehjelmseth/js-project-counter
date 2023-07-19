@@ -7,6 +7,7 @@ const interval = setInterval(function() {
 }, 3000);
 let todaysGoal = document.getElementById("goal");
 let goalHtml = document.getElementById("todaysgoal");
+let todaysales = document.getElementById("todaysales");
 const add = document.getElementById("btn");
 
 
@@ -44,9 +45,15 @@ async function nextcomApi() {
     let goalString = localStorage.getItem('salesGoalLocal');
     let goalFinal = JSON.parse(goalString);
     goalHtml.innerHTML = '';
+    todaysales.innerHTML = '';
     goalHtml.innerHTML += `
     <p>${goalFinal}<p>
     `;
+    todaysales.innerHTML += `
+    <p>${resultsSpec.totalCount}<p>
+    `;
+
+
 
     let count = -globalNumber + resultsSpec.totalCount;
     console.log (count)
@@ -87,10 +94,33 @@ let myDocument = document.documentElement;
       if(myDocument.requestFullscreen){
         myDocument.requestFullscreen();
       }
-      else if(myDocument.msRequestFullscreen){
-        fullscreen.textContent = "Lukk";}
+      else if(myDocument.msRequestFullscreen) {
+        myDocument.msRequestFullscreen();
+      }
+      else if(myDocument.mozRequestFullscreen){
+        myDocument.mozRequestFullscreen();
+      }
+      else if(myDocument.webkitRequestFullscreen){
+        myDocument.webkitRequestFullscreen();
+      }
+
+      fullscreen.textContent = "Lukk"
     }
     else {
+
+      if(document.exitFullscreen){
+        document.exitFullscreen();
+      }
+      else if(msexitFullscreen) {
+        document.msexitFullscreen();
+      }
+      else if(mozexitFullscreen) {
+        document.mozexitFullscreen();
+      }
+      else if(webkitexitFullscreen) {
+        document.webkitexitFullscreen();
+      }
+
       fullscreen.textContent = "Fullskjerm";
     }
 
