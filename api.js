@@ -24,7 +24,7 @@ const options = {
 
 };
 
-const url = "https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&offset=127000&limit=200";
+const url = "https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=%7B%0A%20%20%20%20%22acceptDate%22%20%3A%20%7B%20%22%24gte%22%20%3A%20%222023-07-25%22%20%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24equals%22%20%3A%202%7D%0A%7D&offset=0&limit=200";
 const proxy = "https://noroffcors.onrender.com/";
 
 const corsFix = proxy + url;
