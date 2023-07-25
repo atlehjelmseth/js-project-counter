@@ -23,9 +23,22 @@ const options = {
    }
 
 };
+const date = new Date();
 
-const url = "https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=%7B%0A%20%20%20%20%22acceptDate%22%20%3A%20%7B%20%22%24gte%22%20%3A%20%222023-07-25%22%20%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24equals%22%20%3A%202%7D%0A%7D&offset=0&limit=200";
+let currentDate = date.toJSON();
+var fullDate = (currentDate.slice(0,10));
+
+console.log(fullDate)
+
+// var filter = "{ \"acceptDate\" : { \"$gte\" : \"" + today.getDate("YYYY-MM-DD") + "/";
+
+// const url = `https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=%7B%0A%20%20%20%20%22acceptDate%22%20%3A%20%7B%20%22%24gte%22%20%3A%20%22${fullDate}%22%20%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24equals%22%20%3A%202%7D%0A%7D&offset=0&limit=200`;
+const url = `https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=%7B%0A%20%20%20%20%22acceptDate%22%20%3A%20%7B%20%22%24gte%22%20%3A%20%22${fullDate}%22%20%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24gte%22%20%3A%202%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24lte%22%20%3A%2029%7D%0A%7D&offset=0&limit=200`;
+
+
+// const url = "https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=" + JSON.stringify(filter) + "offset=0&limit=200";
 const proxy = "https://noroffcors.onrender.com/";
+
 
 const corsFix = proxy + url;
 
@@ -42,7 +55,7 @@ async function nextcomApi() {
       let globalNumber = JSON.parse(globalString);
       number.innerHTML = -globalNumber + resultsSpec.totalCount;
 
-        
+
     let goalString = localStorage.getItem('salesGoalLocal');
     let goalFinal = JSON.parse(goalString);
     goalHtml.innerHTML = '';
@@ -59,7 +72,7 @@ async function nextcomApi() {
     let count = -globalNumber + resultsSpec.totalCount;
     console.log (count)
 
-    
+
     if (count > 0)
       counter.style.color = 'darkgreen'
     if (count < 0)
@@ -81,7 +94,7 @@ async function nextcomApi() {
   add.onclick = function (ev) {
     ev.preventDefault()
     const goal = todaysGoal.value;
-    
+
     localStorage.setItem('salesGoalLocal', JSON.stringify(goal))
 
     nextcomApi()
