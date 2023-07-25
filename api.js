@@ -139,5 +139,4 @@ let myDocument = document.documentElement;
       fullscreen.textContent = "Fullskjerm";
     }
 
-    /* 2:47 on movie */
   });
