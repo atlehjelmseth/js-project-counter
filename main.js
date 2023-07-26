@@ -1,109 +1,113 @@
-// // buttons and counter text
-// const counter = document.querySelector('#counter')
-// const btns = document.querySelectorAll('.btn')
+/* Fireworks */
 
-// // initialize the count variable
-// let count = -65
+var c = document.getElementById("canvas");
+var ctx = c.getContext("2d");
 
-// btns.forEach((btn) => {
-//   btn.addEventListener('click', (e) => {
-//     const styles = e.currentTarget.classList
-//     const decButton = document.querySelector('.decrease')
+var cwidth, cheight;
+var shells = [];
+var pass= [];
 
-//     if (styles.contains('increase')) {
-//       count++
+var colors = ['#FF5252', '#FF4081', '#E040FB', '#7C4DFF', '#536DFE', '#448AFF', '#40C4FF', '#18FFFF', '#64FFDA', '#69F0AE', '#B2FF59', '#EEFF41', '#FFFF00', '#FFD740', '#FFAB40', '#FF6E40'];
 
-//       if (decButton.disabled) decButton.disabled = false
+window.onresize = function() { reset(); }
+reset();
+function reset() {
 
-//       counter.classList.add('up')
+  cwidth = window.innerWidth;
+	cheight = window.innerHeight;
+	c.width = cwidth;
+	c.height = cheight;
+}
 
-//       setTimeout(() => {
-//         counter.classList.remove('up')
-//       }, 500)
-//     } else if (styles.contains('decrease')) {
-//       count--
+function newShell() {
 
-//       if (count < -65) decButton.disabled = true
+  var left = (Math.random() > 0.5);
+  var shell = {};
+  shell.x = (1*left);
+  shell.y = 1;
+  shell.xoff = (0.01 + Math.random() * 0.007) * (left ? 1 : -1);
+  shell.yoff = 0.01 + Math.random() * 0.007;
+  shell.size = Math.random() * 6 + 3;
+  shell.color = colors[Math.floor(Math.random() * colors.length)];
 
-//       counter.classList.add('down')
+  shells.push(shell);
+}
 
-//       setTimeout(() => {
-//         counter.classList.remove('down')
-//       }, 500)
-//     } else {
-//       if (decButton.disabled) decButton.disabled = false
+function newPass(shell) {
 
-//       count = -65
-//     }
+  var pasCount = Math.ceil(Math.pow(shell.size, 2) * Math.PI);
 
-//     if (count > 0)
-//       counter.style.color = 'darkgreen'
+  for (i = 0; i < pasCount; i++) {
 
-//     if (count < 0)
-//       counter.style.color = 'red'
+    var pas = {};
+    pas.x = shell.x * cwidth;
+    pas.y = shell.y * cheight;
 
-//       if (count === 0)
-//       counter.style.color = 'lightgreen'
+    var a = Math.random() * 4;
+    var s = Math.random() * 10;
 
-//     if (count === -10 || count === -9 || count === -8 || count === -7 || count === -6 || count === -5 || count === -4 || count === -3 || count === -2 || count === -1)
-//       counter.style.color = 'orange'
+		pas.xoff = s *  Math.sin((5 - a) * (Math.PI / 2));
+  	pas.yoff = s *  Math.sin(a * (Math.PI / 2));
 
-//     counter.textContent = count
-//   })
-// })
+    pas.color = shell.color;
+    pas.size = Math.sqrt(shell.size);
 
-// function clearout {
-//   localStorage.clear()
-// }
+    if (pass.length < 1000) { pass.push(pas); }
+  }
+}
 
+var lastRun = 0;
+Run();
+function Run() {
 
+  var dt = 1;
+  if (lastRun != 0) { dt = Math.min(50, (performance.now() - lastRun)); }
+	lastRun = performance.now();
 
-// example {id:1592304983049, title: 'Deadpool', year: 2015}
-// const salesGoal = (ev)=>{
-//     ev.preventDefault();  //to stop the form submitting
-//     let sale = {
+  //ctx.clearRect(0, 0, cwidth, cheight);
+	ctx.fillStyle = "rgba(0,0,0,0.25)";
+	ctx.fillRect(0, 0, cwidth, cheight);
 
-//         sales: document.getElementById('goal').value
-//     }
-//     sales.push(sale);
-//     // document.forms[0].reset(); // to clear the form for the next entries
-//     document.querySelector('form').reset();
+  if ((shells.length < 10) && (Math.random() > 0.96)) { newShell(); }
 
+  for (let ix in shells) {
 
-//     //for display purposes only
-//     // console.warn('added' , {sales} );
-//     // let pre = document.querySelector('#msg pre');
-//     // pre.textContent = '\n' + JSON.stringify(sales, '\t', 2);
+    var shell = shells[ix];
 
-//     //saving to localStorage
-//     localStorage.setItem('salesGoalLocal', JSON.stringify(sales) );
+    ctx.beginPath();
+    ctx.arc(shell.x * cwidth, shell.y * cheight, shell.size, 0, 2 * Math.PI);
+    ctx.fillStyle = shell.color;
+    ctx.fill();
 
-//     let todaysGoal = document.querySelector('.todaysgoal')
-//     let goalHtml = localStorage.getItem('salesGoalLocal');
-//     // clearout()
-//     todaysGoal.innerHTML += goalHtml;
-// }
+    shell.x -= shell.xoff;
+    shell.y -= shell.yoff;
+    shell.xoff -= (shell.xoff * dt * 0.001);
+    shell.yoff -= ((shell.yoff + 0.2) * dt * 0.00005);
 
+    if (shell.yoff < -0.005) {
+      newPass(shell);
+      shells.splice(ix, 1);
+    }
+  }
 
-// document.addEventListener('DOMContentLoaded', ()=>{
-//     document.getElementById('btn').addEventListener('click', salesGoal);
-// });
+  for (let ix in pass) {
 
-// let todaysGoal = document.getElementById("goal");
-// let goalHtml = document.getElementById("todaysgoal");
-// const add = document.getElementById("btn");
+    var pas = pass[ix];
 
+    ctx.beginPath();
+    ctx.arc(pas.x, pas.y, pas.size, 0, 2 * Math.PI);
+    ctx.fillStyle = pas.color;
+    ctx.fill();
 
-// add.onclick = function (ev) {
-//   ev.preventDefault()
-//   const goal = todaysGoal.value;
-  
-//   localStorage.setItem('salesGoalLocal', JSON.stringify(goal))
+    pas.x -= pas.xoff;
+    pas.y -= pas.yoff;
+    pas.xoff -= (pas.xoff * dt * 0.001);
+    pas.yoff -= ((pas.yoff + 5) * dt * 0.0005);
+    pas.size -= (dt * 0.002 * Math.random())
 
-//   let goalString = localStorage.getItem('salesGoalLocal');
-//   let goalFinal = JSON.parse(goalString);
-//   goalHtml.innerHTML = '';
-//   goalHtml.innerHTML += goalFinal;
-//   console.log(goalFinal);
-// }
-
+    if ((pas.y > cheight)  || (pas.y < -50) || (pas.size <= 0)) {
+        pass.splice(ix, 1);
+    }
+  }
+  requestAnimationFrame(Run);
+}

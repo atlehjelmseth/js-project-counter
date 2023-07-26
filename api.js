@@ -10,6 +10,7 @@ let goalHtml = document.getElementById("todaysgoal");
 let todaysales = document.getElementById("todaysales");
 let hidden = document.getElementById("hidden");
 const add = document.getElementById("btn");
+let fireworks = document.querySelector("#canvas");
 
 
 
@@ -23,6 +24,7 @@ const options = {
    }
 
 };
+
 const date = new Date();
 
 let currentDate = date.toJSON();
@@ -70,20 +72,27 @@ async function nextcomApi() {
 
 
     let count = -globalNumber + resultsSpec.totalCount;
+
     console.log (count)
 
 
-    if (count > 0)
-      counter.style.color = 'darkgreen'
-    if (count < 0)
-      counter.style.color = 'red'
+    if (count > 0) {
+      counter.style.color = 'darkgreen',
+      canvas.style.display = "block"
+    }
+    if (count < 0) {
+      counter.style.color = 'red',
+      canvas.style.display = "none"
+    }
+      if (count === 0) {
+      counter.style.color = 'lightgreen',
+      fireworks.style.display = "block"
+    }
 
-      if (count === 0)
-      counter.style.color = 'lightgreen'
-
-    if (count === -10 || count === -9 || count === -8 || count === -7 || count === -6 || count === -5 || count === -4 || count === -3 || count === -2 || count === -1)
-      counter.style.color = 'orange'
-
+    if (count === -10 || count === -9 || count === -8 || count === -7 || count === -6 || count === -5 || count === -4 || count === -3 || count === -2 || count === -1) {
+      counter.style.color = 'orange',
+      canvas.style.display = "none"
+    }
       }catch (error) {
         console.log("error")
     }
