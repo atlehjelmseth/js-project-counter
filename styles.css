@@ -61,6 +61,7 @@ span {
   text-shadow:1px 20px 300px #fff, 1px 20px 50px #ccc;
   -webkit-text-stroke-color: white;
   -webkit-text-stroke-width: 5px;
+  z-index: -1;
 }
 
 span p {
@@ -77,6 +78,7 @@ input {
   text-align: center;
   display: block;
   color: #264348;
+  z-index: 4;
 }
 
 span text {
@@ -94,6 +96,21 @@ button {
   text-align: center;
   display: block;
   color: white;
+  z-index: 1;
+}
+
+#hidden {
+  z-index: 1;
+}
+
+
+#todaysales {
+  z-index: 1;
+}
+
+
+p {
+  z-index: 1;
 }
 
 button:hover {
@@ -176,4 +193,13 @@ canvas {
   z-index: -1;
 }
 
-
+#vid1 {
+  display: none;
+  position: absolute;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}

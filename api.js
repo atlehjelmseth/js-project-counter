@@ -11,6 +11,7 @@ let todaysales = document.getElementById("todaysales");
 let hidden = document.getElementById("hidden");
 const add = document.getElementById("btn");
 let fireworks = document.querySelector("#canvas");
+const vid1 = document.querySelector("#vid1"); 
 
 
 
@@ -80,6 +81,7 @@ async function nextcomApi() {
     if (count > 0) {
       counter.style.color = 'darkgreen',
       canvas.style.display = "block"
+
     }
     if (count < 0) {
       counter.style.color = 'red',
@@ -93,6 +95,15 @@ async function nextcomApi() {
     if (count === -10 || count === -9 || count === -8 || count === -7 || count === -6 || count === -5 || count === -4 || count === -3 || count === -2 || count === -1) {
       counter.style.color = 'orange',
       canvas.style.display = "none"
+    }
+
+    if (count > 9 && count < 20) {
+      counter.style.color = 'lightgreen',
+      fireworks.style.display = "block",
+      vid1.style.display = "block"
+    }
+    else {
+      vid1.style.display = "none"
     }
       }catch (error) {
         console.log("error")
