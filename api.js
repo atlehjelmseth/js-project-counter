@@ -35,7 +35,8 @@ console.log(fullDate)
 // var filter = "{ \"acceptDate\" : { \"$gte\" : \"" + today.getDate("YYYY-MM-DD") + "/";
 
 // const url = `https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=%7B%0A%20%20%20%20%22acceptDate%22%20%3A%20%7B%20%22%24gte%22%20%3A%20%22${fullDate}%22%20%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24equals%22%20%3A%202%7D%0A%7D&offset=0&limit=200`;
-const url = `https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=%7B%0A%20%20%20%20%22acceptDate%22%20%3A%20%7B%20%22%24gte%22%20%3A%20%22${fullDate}%22%20%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24gte%22%20%3A%202%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24lte%22%20%3A%2029%7D%0A%7D&offset=0&limit=200`;
+// const url = `https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=%7B%0A%20%20%20%20%22acceptDate%22%20%3A%20%7B%20%22%24gte%22%20%3A%20%22${fullDate}%22%20%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24gte%22%20%3A%202%7D%2C%0A%20%20%20%20%22statusId%22%20%3A%20%7B%22%24lte%22%20%3A%2029%7D%0A%7D&offset=0&limit=200`;
+const url = `https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=%7B%20%20%20%20%20%22acceptDate%22%20%3A%20%7B%20%22%24gte%22%20%3A%20%22${fullDate}%22%20%7D%2C%20%20%20%20%20%22statusId%22%20%3A%20%7B%22%24gte%22%20%3A%202%7D%2C%20%20%20%20%20%22statusId%22%20%3A%20%7B%22%24lte%22%20%3A%2014%7D%20%7D&offset=0&limit=200`;
 
 
 // const url = "https://hkmarked.nextcom.no/rest-api/public/v2.0/crm-system/orders?locale=eng&filter=" + JSON.stringify(filter) + "offset=0&limit=200";
