@@ -13,7 +13,7 @@ const add = document.getElementById("btn");
 let fireworks = document.querySelector("#canvas");
 const vid1 = document.querySelector("#vid1"); 
 const pic2 = document.querySelector("#pic2"); 
-
+const pic3 = document.querySelector("#pic3"); 
 
 
 const options = {
@@ -100,7 +100,7 @@ async function nextcomApi() {
 
     if (count > 9 && count < 20) {
       counter.style.color = 'lightgreen',
-      fireworks.style.display = "block",
+      fireworks.style.display = "block"
       vid1.style.display = "block"
     }
     else {
@@ -113,6 +113,14 @@ async function nextcomApi() {
     }
     else {
       pic2.style.display = "none"
+    }
+    if (count > 4 && count < 10) {
+      counter.style.color = 'lightgreen',
+      fireworks.style.display = "block",
+      pic3.style.display = "block"
+    }
+    else {
+      pic3.style.display = "none"
     }
       }catch (error) {
         console.log("error")
