@@ -114,17 +114,14 @@ async function nextcomApi() {
     else {
       pic2.style.display = "none"
     }
-    if (count > 4 && count < 6) {
-      counter.style.color = 'lightgreen',
-      fireworks.style.display = "block",
+    if (count > -100 && count < -5) {
       pic3.style.display = "block"
     }
     else {
       pic3.style.display = "none"
     }
-    if (count > 5 && count < 10) {
-      counter.style.color = 'lightgreen',
-      fireworks.style.display = "block",
+    if (count > -6 && count < 0) {
+      counter.style.color = 'orange',
       pic4.style.display = "block"
     }
     else {
