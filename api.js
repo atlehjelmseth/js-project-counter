@@ -15,7 +15,6 @@ const vid1 = document.querySelector("#vid1");
 const pic2 = document.querySelector("#pic2"); 
 const pic3 = document.querySelector("#pic3"); 
 
-
 const options = {
 
   method: 'GET',
@@ -106,7 +105,7 @@ async function nextcomApi() {
     else {
       vid1.style.display = "none"
     }
-    if (count > 19 && count < 26) {
+    if (count > 4 && count < 10) {
       counter.style.color = 'lightgreen',
       fireworks.style.display = "block",
       pic2.style.display = "block"
@@ -121,8 +120,7 @@ async function nextcomApi() {
     //   pic3.style.display = "none"
     // }
     if (count > -6 && count < 0) {
-      counter.style.color = 'orange',
-      pic4.style.display = "block"
+      counter.style.color = 'orange'
     }
     else {
       pic4.style.display = "none"
