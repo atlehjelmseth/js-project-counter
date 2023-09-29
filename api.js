@@ -52,8 +52,6 @@ async function nextcomApi() {
   try {const response = await fetch(corsFix,options);
        const resultsSpec = await response.json();
 
-
-      // console.log(resultsSpec)
       console.log(resultsSpec.totalCount)
       let globalString = localStorage.getItem('salesGoalLocal');
       let globalNumber = JSON.parse(globalString);
